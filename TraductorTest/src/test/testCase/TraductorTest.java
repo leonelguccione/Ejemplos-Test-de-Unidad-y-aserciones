@@ -11,7 +11,7 @@
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
 
-package test;
+package test.testCase;
 
 import junit.framework.TestCase;
 
