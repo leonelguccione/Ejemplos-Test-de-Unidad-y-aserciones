@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="Generator" content="Kate, the KDE Advanced Text Editor" />
+<title>Fecha.java</title>
+</head>
+<body>
+<pre style='color:#1f1c1b;background-color:#ffffff;'>
+<b>package</b><span style='color:#808000;'> invariante;</span>
+
+<b>import</b><span style='color:#808000;'> org.junit.Assert;</span>
+
+<span style='color:#898887;'>/*</span><span style='color:#898887;'> Describimos los invariantes de Clase:</span>
+<span style='color:#898887;'> * El contenido de las variables de clase dia y hora, </span>
+<span style='color:#898887;'> * deben cumplir en todo momento que:</span>
+<span style='color:#898887;'> * dia&gt;=1 y dia&lt;=31</span>
+<span style='color:#898887;'> * hora&gt;=0 y hora&lt;=24&quot;</span>
+<span style='color:#898887;'> </span><span style='color:#898887;'>*/</span>
+
+<b>public</b> <b>class</b> Fecha
+{
+
+    <b>private</b> <span style='color:#0057ae;'>int</span> dia = <span style='color:#b08000;'>1</span>;
+    <b>private</b> <span style='color:#0057ae;'>int</span> hora = <span style='color:#b08000;'>0</span>;
+
+    <b>public</b> <span style='color:#644a9b;'>Fecha</span>(<span style='color:#0057ae;'>int</span> d, <span style='color:#0057ae;'>int</span> h)
+    { 
+        <span style='color:#898887;'>// constructor</span>
+        <span style='color:#898887;'>/*</span><span style='color:#898887;'>El invariante de clase se debe garantizar al ingresar en cada método</span>
+<span style='color:#898887;'>        * publico de la clase y en cada constructor </span>
+<span style='color:#898887;'>        * </span><span style='color:#898887;'>*/</span>
+        Assert.<span style='color:#644a9b;'>assertTrue</span>(<span style='color:#bf0303;'>&quot;Rango Erroneo Invariante de Clase Fecha&quot;</span>,
+                          (dia &gt;= <span style='color:#b08000;'>1</span>) &amp;&amp; (dia &lt;= <span style='color:#b08000;'>31</span>) &amp;&amp; (hora &gt;= <span style='color:#b08000;'>0</span>) &amp;&amp; (hora &lt;= <span style='color:#b08000;'>24</span>));
+        <span style='color:#898887;'>/*</span><span style='color:#898887;'> precondicion del constructor </span><span style='color:#898887;'>*/</span>
+        Assert.<span style='color:#644a9b;'>assertTrue</span>(<span style='color:#bf0303;'>&quot;Rango Erroneo Constructor Fecha&quot;</span>, 
+				    (d &gt;= <span style='color:#b08000;'>1</span>) &amp;&amp; (d &lt;= <span style='color:#b08000;'>31</span>) &amp;&amp; (h &gt;= <span style='color:#b08000;'>0</span>) &amp;&amp; (h &lt;= <span style='color:#b08000;'>24</span>));
+        dia = d;
+        hora = h;
+        <span style='color:#898887;'>/*</span><span style='color:#898887;'> postcondicion del Constructor </span><span style='color:#898887;'>*/</span>
+        Assert.<span style='color:#644a9b;'>assertTrue</span>(<span style='color:#bf0303;'>&quot;Error de Inicializaci[on Constructor Fecha&quot;</span>, 
+				    (dia == d) &amp;&amp; (hora == h));
+        <span style='color:#898887;'>/*</span><span style='color:#898887;'> Invariante de Clase se debe garantizar al salir de cada método</span>
+<span style='color:#898887;'>         * publico de la clase y en sus constructores </span>
+<span style='color:#898887;'>        </span><span style='color:#898887;'>*/</span>
+        Assert.<span style='color:#644a9b;'>assertTrue</span>(<span style='color:#bf0303;'>&quot;Rango Erroneo Invariante de Clase Fecha&quot;</span>,
+                          (dia &gt;= <span style='color:#b08000;'>1</span>) &amp;&amp; (dia &lt;= <span style='color:#b08000;'>31</span>) &amp;&amp; (hora &gt;= <span style='color:#b08000;'>0</span>) &amp;&amp; (hora &lt;= <span style='color:#b08000;'>24</span>));
+    }
+
+    <span style='color:#898887;'>/*</span><span style='color:#898887;'> establecemos las precondiciones y postcondiciones para setdia(int d)</span>
+<span style='color:#898887;'>     * Require: (d&gt;=1) &amp;&amp; (d&lt;=31)</span>
+<span style='color:#898887;'>     * Ensures: (dia = d)</span>
+<span style='color:#898887;'>     </span><span style='color:#898887;'>*/</span>
+
+    <b>public</b> <span style='color:#0057ae;'>void</span> <span style='color:#644a9b;'>setdia</span>(<span style='color:#0057ae;'>int</span> d)
+    {
+        <span style='color:#898887;'>/*</span><span style='color:#898887;'>El invariante de clase se debe garantizar al ingresar en cada método</span>
+<span style='color:#898887;'>         * publico de la clase y en cada constructor </span><span style='color:#898887;'>*/</span>
+        Assert.<span style='color:#644a9b;'>assertTrue</span>(<span style='color:#bf0303;'>&quot;Rango Erroneo Invariante de Clase Fecha&quot;</span>,
+                          (dia &gt;= <span style='color:#b08000;'>1</span>) &amp;&amp; (dia &lt;= <span style='color:#b08000;'>31</span>) &amp;&amp; (hora &gt;= <span style='color:#b08000;'>0</span>) &amp;&amp; (hora &lt;= <span style='color:#b08000;'>24</span>));
+        <span style='color:#898887;'>/*</span><span style='color:#898887;'> Precondicion setdia </span><span style='color:#898887;'>*/</span>
+        Assert.<span style='color:#644a9b;'>assertTrue</span>(<span style='color:#bf0303;'>&quot;Rango Erroneo setdia&quot;</span>, (d &gt;= <span style='color:#b08000;'>1</span>) &amp;&amp; (d &lt;= <span style='color:#b08000;'>31</span>));
+        dia = d;
+        <span style='color:#898887;'>/*</span><span style='color:#898887;'> Postcondicion setdia </span><span style='color:#898887;'>*/</span>
+        Assert.<span style='color:#644a9b;'>assertTrue</span>(<span style='color:#bf0303;'>&quot;Error de Inicializacion setdia&quot;</span>, (dia == d));
+        <span style='color:#898887;'>/*</span><span style='color:#898887;'>Invariante de Clase se debe garantizar al salir de cada método</span>
+<span style='color:#898887;'>         * publico de la clase y en sus constructores </span><span style='color:#898887;'>*/</span>
+        Assert.<span style='color:#644a9b;'>assertTrue</span>(<span style='color:#bf0303;'>&quot;Rango Erroneo Invariante de Clase Fecha&quot;</span>,
+                          (dia &gt;= <span style='color:#b08000;'>1</span>) &amp;&amp; (dia &lt;= <span style='color:#b08000;'>31</span>) &amp;&amp; (hora &gt;= <span style='color:#b08000;'>0</span>) &amp;&amp; (hora &lt;= <span style='color:#b08000;'>24</span>));
+    }
+
+    <span style='color:#898887;'>/*</span><span style='color:#898887;'> Establecemos precondiciones y postcondiciones para sethora()</span>
+<span style='color:#898887;'>     * Requires : (h&gt;=0) &amp;&amp; (h&lt;=24)</span>
+<span style='color:#898887;'>     * Ensures : hora = h</span>
+<span style='color:#898887;'>     </span><span style='color:#898887;'>*/</span>
+     
+     
+    <b>public</b> <span style='color:#0057ae;'>void</span> <span style='color:#644a9b;'>sethora</span>(<span style='color:#0057ae;'>int</span> h)
+    {
+        <span style='color:#898887;'>/*</span><span style='color:#898887;'>El invariante de clase se debe garantizar al ingresar en cada método</span>
+<span style='color:#898887;'>         * publico de la clase y en cada constructor </span><span style='color:#898887;'>*/</span>
+        Assert.<span style='color:#644a9b;'>assertTrue</span>(<span style='color:#bf0303;'>&quot;Rango Erroneo Invariante de Clase Fecha&quot;</span>,
+                          (dia &gt;= <span style='color:#b08000;'>1</span>) &amp;&amp; (dia &lt;= <span style='color:#b08000;'>31</span>) &amp;&amp; (hora &gt;= <span style='color:#b08000;'>0</span>) &amp;&amp; (hora &lt;= <span style='color:#b08000;'>24</span>));
+        <span style='color:#898887;'>/*</span><span style='color:#898887;'>Precondicion sethora</span><span style='color:#898887;'>*/</span>
+        Assert.<span style='color:#644a9b;'>assertTrue</span>(<span style='color:#bf0303;'>&quot;Rango Erroneo&quot;</span>, (h &gt;= <span style='color:#b08000;'>0</span>) &amp;&amp; (h &lt;= <span style='color:#b08000;'>24</span>));
+        hora = h;
+        <span style='color:#898887;'>/*</span><span style='color:#898887;'>Postcondicion sethora</span><span style='color:#898887;'>*/</span>
+        Assert.<span style='color:#644a9b;'>assertTrue</span>(<span style='color:#bf0303;'>&quot;Error de Inicializacion set hora&quot;</span>, (hora == h));
+        <span style='color:#898887;'>/*</span><span style='color:#898887;'>Invariante de Clase se debe garantizar al salir de cada método</span>
+<span style='color:#898887;'>         * publico de la clase y en sus constructores </span><span style='color:#898887;'>*/</span>
+        Assert.<span style='color:#644a9b;'>assertTrue</span>(<span style='color:#bf0303;'>&quot;Rango Erroneo Invariante de Clase Fecha&quot;</span>,
+                          (dia &gt;= <span style='color:#b08000;'>1</span>) &amp;&amp; (dia &lt;= <span style='color:#b08000;'>31</span>) &amp;&amp; (hora &gt;= <span style='color:#b08000;'>0</span>) &amp;&amp; (hora &lt;= <span style='color:#b08000;'>24</span>));
+
+    }
+
+    <b>public</b> <span style='color:#0057ae;'>int</span> <span style='color:#644a9b;'>getdia</span>()
+    {
+        <span style='color:#898887;'>/*</span><span style='color:#898887;'>El invariante de clase se debe garantizar al ingresar en cada método</span>
+<span style='color:#898887;'>         * publico de la clase y en cada constructor </span><span style='color:#898887;'>*/</span>
+        Assert.<span style='color:#644a9b;'>assertTrue</span>(<span style='color:#bf0303;'>&quot;Rango Erroneo Invariante de Clase Fecha&quot;</span>,
+                          (dia &gt;= <span style='color:#b08000;'>1</span>) &amp;&amp; (dia &lt;= <span style='color:#b08000;'>31</span>) &amp;&amp; (hora &gt;= <span style='color:#b08000;'>0</span>) &amp;&amp; (hora &lt;= <span style='color:#b08000;'>24</span>));
+        <b>return</b> dia;
+    }
+
+    <b>public</b> <span style='color:#0057ae;'>int</span> <span style='color:#644a9b;'>gethora</span>()
+    {
+        <span style='color:#898887;'>/*</span><span style='color:#898887;'>El invariante de clase se debe garantizar al ingresar en cada método</span>
+<span style='color:#898887;'>          * publico de la clase y en cada constructor </span><span style='color:#898887;'>*/</span>
+        Assert.<span style='color:#644a9b;'>assertTrue</span>(<span style='color:#bf0303;'>&quot;Rango Erroneo Invariante de Clase Fecha&quot;</span>,
+                          (dia &gt;= <span style='color:#b08000;'>1</span>) &amp;&amp; (dia &lt;= <span style='color:#b08000;'>31</span>) &amp;&amp; (hora &gt;= <span style='color:#b08000;'>0</span>) &amp;&amp; (hora &lt;= <span style='color:#b08000;'>24</span>));
+        <b>return</b> hora;
+    }
+}
+
+</pre>
+</body>
+</html>

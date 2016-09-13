@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="Generator" content="Kate, the KDE Advanced Text Editor" />
+<title>InterfazTraductor.java</title>
+</head>
+<body>
+<pre style='color:#1f1c1b;background-color:#ffffff;'>
+<b><span style='color:#008000;'>/**</span></b>
+<b><span style='color:#008000;'> * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span></b>
+<b><span style='color:#008000;'> * $Id: InterfazTraductor.java,v 1.9 2006/08/08 13:32:58 da-romer Exp $</span></b>
+<b><span style='color:#008000;'> * Universidad de los Andes (Bogotá - Colombia)</span></b>
+<b><span style='color:#008000;'> * Departamento de Ingeniería de Sistemas y Computación </span></b>
+<b><span style='color:#008000;'> * Licenciado bajo el esquema Academic Free License version 2.1 </span></b>
+<b><span style='color:#008000;'> *</span></b>
+<b><span style='color:#008000;'> * Proyecto Cupi2 (http://cupi2.uniandes.edu.co)</span></b>
+<b><span style='color:#008000;'> * Ejercicio: n7_traductor</span></b>
+<b><span style='color:#008000;'> * Autor: Daniel Francisco Romero - 27-jun-2006</span></b>
+<b><span style='color:#008000;'> * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span></b>
+<b><span style='color:#008000;'> </span></b><b><span style='color:#008000;'>*/</span></b>
+
+<b>package</b><span style='color:#808000;'> uniandes.cupi2.traductor.interfaz;</span>
+
+<b>import</b><span style='color:#808000;'> java.awt.*;</span>
+
+<b>import</b><span style='color:#808000;'> javax.swing.*;</span>
+
+<b>import</b><span style='color:#808000;'> uniandes.cupi2.traductor.mundo.*;</span>
+
+<b><span style='color:#008000;'>/**</span></b>
+<b><span style='color:#008000;'> * Esta es la ventana principal de la aplicación.</span></b>
+<span style='color:#008000;'> </span><b><span style='color:#008000;'>*/</span></b>
+<b>public</b> <b>class</b> InterfazTraductor <b>extends</b> <b><span style='color:#0095ff;'>JFrame</span></b>
+{
+    <span style='color:#898887;'>// -----------------------------------------------------------------</span>
+    <span style='color:#898887;'>// Constantes</span>
+    <span style='color:#898887;'>// -----------------------------------------------------------------</span>
+    <b>public</b> <span style='color:#0057ae;'>static</span> <span style='color:#0057ae;'>final</span> <b><span style='color:#0095ff;'>String</span></b> IDIOMA_ESPANOL = <span style='color:#bf0303;'>&quot;Español&quot;</span>;
+    <b>public</b> <span style='color:#0057ae;'>static</span> <span style='color:#0057ae;'>final</span> <b><span style='color:#0095ff;'>String</span></b> IDIOMA_INGLES = <span style='color:#bf0303;'>&quot;Inglés&quot;</span>;
+    <b>public</b> <span style='color:#0057ae;'>static</span> <span style='color:#0057ae;'>final</span> <b><span style='color:#0095ff;'>String</span></b> IDIOMA_FRANCES = <span style='color:#bf0303;'>&quot;Francés&quot;</span>;
+    <b>public</b> <span style='color:#0057ae;'>static</span> <span style='color:#0057ae;'>final</span> <b><span style='color:#0095ff;'>String</span></b> IDIOMA_ITALIANO = <span style='color:#bf0303;'>&quot;Italiano&quot;</span>;
+
+    <span style='color:#898887;'>// -----------------------------------------------------------------</span>
+    <span style='color:#898887;'>// Atributos</span>
+    <span style='color:#898887;'>// -----------------------------------------------------------------</span>
+
+    <b><span style='color:#008000;'>/**</span></b>
+<b><span style='color:#008000;'>     * Clase principal del mundo</span></b>
+<b><span style='color:#008000;'>     </span></b><b><span style='color:#008000;'>*/</span></b>
+    <b>private</b> Traductor traductor;
+
+    <span style='color:#898887;'>// -----------------------------------------------------------------</span>
+    <span style='color:#898887;'>// Atributos de la interfaz</span>
+    <span style='color:#898887;'>// -----------------------------------------------------------------</span>
+
+    <b><span style='color:#008000;'>/**</span></b>
+<b><span style='color:#008000;'>     * Panel con las extensiones</span></b>
+<b><span style='color:#008000;'>     </span></b><b><span style='color:#008000;'>*/</span></b>
+    <b>private</b> PanelExtension panelExtension;
+
+    <b><span style='color:#008000;'>/**</span></b>
+<b><span style='color:#008000;'>     * Panel para la adición de palabras</span></b>
+<b><span style='color:#008000;'>     </span></b><b><span style='color:#008000;'>*/</span></b>
+    <b>private</b> PanelAdicion panelAdicion;
+
+    <b><span style='color:#008000;'>/**</span></b>
+<b><span style='color:#008000;'>     * Panel con estadísticas sobre el número de palabras en cada diccionario</span></b>
+<b><span style='color:#008000;'>     </span></b><b><span style='color:#008000;'>*/</span></b>
+    <b>private</b> PanelDiccionarios panelDiccionarios;
+
+    <b><span style='color:#008000;'>/**</span></b>
+<b><span style='color:#008000;'>     * Panel para las consultas de las traducciones</span></b>
+<b><span style='color:#008000;'>     </span></b><b><span style='color:#008000;'>*/</span></b>
+    <b>private</b> PanelConsulta panelConsulta;
+
+    <b><span style='color:#008000;'>/**</span></b>
+<b><span style='color:#008000;'>     * Panel para mostrar una imagen decorativa</span></b>
+<b><span style='color:#008000;'>     </span></b><b><span style='color:#008000;'>*/</span></b>
+    <b>private</b> PanelImagen panelImagen;
+
+    <span style='color:#898887;'>// -----------------------------------------------------------------</span>
+    <span style='color:#898887;'>// Constructores</span>
+    <span style='color:#898887;'>// -----------------------------------------------------------------</span>
+
+    <b><span style='color:#008000;'>/**</span></b>
+<b><span style='color:#008000;'>     * Crea la ventana principal de la aplicación.</span></b>
+<span style='color:#008000;'>     </span><b><span style='color:#008000;'>*/</span></b>
+    <b>public</b> <span style='color:#644a9b;'>InterfazTraductor</span>( )
+    {
+        <span style='color:#898887;'>// Crea la clase principal</span>
+        traductor = <b>new</b> <span style='color:#644a9b;'>Traductor</span>( );
+
+        <span style='color:#898887;'>// Construye la forma</span>
+        <span style='color:#644a9b;'>getContentPane</span>( ).<span style='color:#644a9b;'>setLayout</span>( <b>new</b> <b><span style='color:#0095ff;'>GridBagLayout</span></b>( ) );
+        <span style='color:#644a9b;'>setSize</span>( <span style='color:#b08000;'>720</span>, <span style='color:#b08000;'>425</span> );
+        <span style='color:#644a9b;'>setDefaultCloseOperation</span>( <b><span style='color:#0095ff;'>JFrame</span></b>.<span style='color:#644a9b;'>EXIT_ON_CLOSE</span> );
+        <span style='color:#644a9b;'>setTitle</span>( <span style='color:#bf0303;'>&quot;Traductor&quot;</span> );
+        <span style='color:#644a9b;'>setResizable</span>( <b>false</b> );
+
+        <span style='color:#898887;'>// Creación de los paneles</span>
+        <b><span style='color:#0095ff;'>GridBagConstraints</span></b> gbc = <b>new</b> <b><span style='color:#0095ff;'>GridBagConstraints</span></b>( );
+        gbc = <b>new</b> <b><span style='color:#0095ff;'>GridBagConstraints</span></b>( );
+        gbc.<span style='color:#644a9b;'>gridx</span> = <span style='color:#b08000;'>0</span>;
+        gbc.<span style='color:#644a9b;'>gridy</span> = <span style='color:#b08000;'>0</span>;
+        gbc.<span style='color:#644a9b;'>fill</span> = <b><span style='color:#0095ff;'>GridBagConstraints</span></b>.<span style='color:#644a9b;'>HORIZONTAL</span>;
+        panelImagen = <b>new</b> <span style='color:#644a9b;'>PanelImagen</span>( );
+        <span style='color:#644a9b;'>getContentPane</span>( ).<span style='color:#644a9b;'>add</span>( panelImagen, gbc );
+
+        gbc = <b>new</b> <b><span style='color:#0095ff;'>GridBagConstraints</span></b>( );
+        gbc.<span style='color:#644a9b;'>gridx</span> = <span style='color:#b08000;'>0</span>;
+        gbc.<span style='color:#644a9b;'>gridy</span> = <span style='color:#b08000;'>1</span>;
+        gbc.<span style='color:#644a9b;'>fill</span> = <b><span style='color:#0095ff;'>GridBagConstraints</span></b>.<span style='color:#644a9b;'>HORIZONTAL</span>;
+        panelConsulta = <b>new</b> <span style='color:#644a9b;'>PanelConsulta</span>( <b>this</b> );
+        <span style='color:#644a9b;'>getContentPane</span>( ).<span style='color:#644a9b;'>add</span>( panelConsulta, gbc );
+
+        gbc = <b>new</b> <b><span style='color:#0095ff;'>GridBagConstraints</span></b>( );
+        gbc.<span style='color:#644a9b;'>gridx</span> = <span style='color:#b08000;'>0</span>;
+        gbc.<span style='color:#644a9b;'>gridy</span> = <span style='color:#b08000;'>2</span>;
+        gbc.<span style='color:#644a9b;'>fill</span> = <b><span style='color:#0095ff;'>GridBagConstraints</span></b>.<span style='color:#644a9b;'>HORIZONTAL</span>;
+        panelAdicion = <b>new</b> <span style='color:#644a9b;'>PanelAdicion</span>( <b>this</b> );
+        <span style='color:#644a9b;'>getContentPane</span>( ).<span style='color:#644a9b;'>add</span>( panelAdicion, gbc );
+
+        gbc = <b>new</b> <b><span style='color:#0095ff;'>GridBagConstraints</span></b>( );
+        gbc.<span style='color:#644a9b;'>gridx</span> = <span style='color:#b08000;'>0</span>;
+        gbc.<span style='color:#644a9b;'>gridy</span> = <span style='color:#b08000;'>3</span>;
+        gbc.<span style='color:#644a9b;'>fill</span> = <b><span style='color:#0095ff;'>GridBagConstraints</span></b>.<span style='color:#644a9b;'>HORIZONTAL</span>;
+        panelDiccionarios = <b>new</b> <span style='color:#644a9b;'>PanelDiccionarios</span>( );
+        <span style='color:#644a9b;'>refrescarTotalesDiccionarios</span>( );
+        <span style='color:#644a9b;'>getContentPane</span>( ).<span style='color:#644a9b;'>add</span>( panelDiccionarios, gbc );
+
+        gbc = <b>new</b> <b><span style='color:#0095ff;'>GridBagConstraints</span></b>( );
+        gbc.<span style='color:#644a9b;'>gridx</span> = <span style='color:#b08000;'>0</span>;
+        gbc.<span style='color:#644a9b;'>gridy</span> = <span style='color:#b08000;'>4</span>;
+        gbc.<span style='color:#644a9b;'>fill</span> = <b><span style='color:#0095ff;'>GridBagConstraints</span></b>.<span style='color:#644a9b;'>HORIZONTAL</span>;
+        panelExtension = <b>new</b> <span style='color:#644a9b;'>PanelExtension</span>( <b>this</b> );
+        <span style='color:#644a9b;'>getContentPane</span>( ).<span style='color:#644a9b;'>add</span>( panelExtension, gbc );
+    }
+
+    <span style='color:#898887;'>// -----------------------------------------------------------------</span>
+    <span style='color:#898887;'>// Métodos</span>
+    <span style='color:#898887;'>// -----------------------------------------------------------------</span>
+    <b><span style='color:#008000;'>/**</span></b>
+<b><span style='color:#008000;'>     * Agrega una palabra al idioma en la que se ha especificado una traducción</span></b>
+<b><span style='color:#008000;'>     * </span></b><b><span style='color:#808080;'>@param </span></b><i><span style='color:#008080;'>pal </span></i><span style='color:#008000;'>es la palabra - pal != null y pal != &quot;&quot;</span>
+<span style='color:#008000;'>     </span><b><span style='color:#008000;'>*</span></b><span style='color:#008000;'> </span><b><span style='color:#808080;'>@param </span></b><i><span style='color:#008080;'>trad </span></i><span style='color:#008000;'>es la traducción - trad != null y trad != &quot;&quot;</span>
+<span style='color:#008000;'>     </span><b><span style='color:#008000;'>*</span></b><span style='color:#008000;'> </span><b><span style='color:#808080;'>@param </span></b><i><span style='color:#008080;'>idioma </span></i><span style='color:#008000;'>es el idioma destino - idioma pertenece a {FRANCES, INGLES, ITALIANO}</span>
+<span style='color:#008000;'>     </span><b><span style='color:#008000;'>*/</span></b>
+    <b>public</b> <span style='color:#0057ae;'>void</span> <span style='color:#644a9b;'>agregarPalabra</span>( <b><span style='color:#0095ff;'>String</span></b> pal, <b><span style='color:#0095ff;'>String</span></b> trad, <span style='color:#0057ae;'>int</span> idioma )
+    {
+        <span style='color:#898887;'>// Adiciona la traducción</span>
+        <b>if</b>( traductor.<span style='color:#644a9b;'>agregarTraduccion</span>( pal, trad, idioma ) )
+        {
+            panelAdicion.<span style='color:#644a9b;'>limpiar</span>( );
+            <span style='color:#898887;'>// Actualiza los totales</span>
+            <span style='color:#644a9b;'>refrescarTotalesDiccionarios</span>( );
+        }
+        <b>else</b>
+            <b><span style='color:#0095ff;'>JOptionPane</span></b>.<span style='color:#644a9b;'>showMessageDialog</span>( <b>this</b>, <span style='color:#bf0303;'>&quot;La palabra ya existe o su traducción ya está asignada a otra palabra&quot;</span>, <span style='color:#bf0303;'>&quot;Error al adicionar&quot;</span>, <b><span style='color:#0095ff;'>JOptionPane</span></b>.<span style='color:#644a9b;'>ERROR_MESSAGE</span> );
+    }
+
+    <b><span style='color:#008000;'>/**</span></b>
+<b><span style='color:#008000;'>     * Traduce una palabra y muestra el resultado en el panel de consulta</span></b>
+<b><span style='color:#008000;'>     * </span></b><b><span style='color:#808080;'>@param </span></b><i><span style='color:#008080;'>pal </span></i><span style='color:#008000;'>es la palabra - pal != null</span>
+<span style='color:#008000;'>     </span><b><span style='color:#008000;'>*</span></b><span style='color:#008000;'> </span><b><span style='color:#808080;'>@param </span></b><i><span style='color:#008080;'>origen </span></i><span style='color:#008000;'>es el idioma de origen - origen pertenece a {FRANCES, INGLES, ITALIANO, ESPANOL}</span>
+<span style='color:#008000;'>     </span><b><span style='color:#008000;'>*</span></b><span style='color:#008000;'> </span><b><span style='color:#808080;'>@param </span></b><i><span style='color:#008080;'>destino </span></i><span style='color:#008000;'>es el idioma destino - destino pertenece a {FRANCES, INGLES, ITALIANO, ESPANOL}</span>
+<span style='color:#008000;'>     </span><b><span style='color:#008000;'>*/</span></b>
+    <b>public</b> <span style='color:#0057ae;'>void</span> <span style='color:#644a9b;'>traducirPalabra</span>( <b><span style='color:#0095ff;'>String</span></b> pal, <span style='color:#0057ae;'>int</span> origen, <span style='color:#0057ae;'>int</span> destino )
+    {
+        Traduccion traduccion = traductor.<span style='color:#644a9b;'>traducir</span>( pal, origen, destino );
+        <b>if</b>( traduccion != <b>null</b> )
+        {
+            <span style='color:#898887;'>// Dependiendo del idioma destino se muestra la palabra o la traducción</span>
+            <b>if</b>( destino == Traductor.<span style='color:#644a9b;'>ESPANOL</span> )
+            {
+                <span style='color:#898887;'>// Si es español el idioma destino se muestra la traducción</span>
+                panelConsulta.<span style='color:#644a9b;'>mostrarTraduccion</span>( traduccion.<span style='color:#644a9b;'>darPalabra</span>( ) );
+            }
+            <b>else</b>
+            {
+                <span style='color:#898887;'>// Si el idioma destino no es español se muestra la palabra</span>
+                panelConsulta.<span style='color:#644a9b;'>mostrarTraduccion</span>( traduccion.<span style='color:#644a9b;'>darTraduccion</span>( ) );
+            }
+        }
+        <b>else</b>
+        {
+            panelConsulta.<span style='color:#644a9b;'>mostrarTraduccion</span>( <span style='color:#bf0303;'>&quot;&quot;</span> );
+            <b><span style='color:#0095ff;'>JOptionPane</span></b>.<span style='color:#644a9b;'>showMessageDialog</span>( <b>this</b>, <span style='color:#bf0303;'>&quot;No existe la traducción de la palabra&quot;</span>, <span style='color:#bf0303;'>&quot;Traducción&quot;</span>, <b><span style='color:#0095ff;'>JOptionPane</span></b>.<span style='color:#644a9b;'>ERROR_MESSAGE</span> );
+        }
+    }
+
+    <b><span style='color:#008000;'>/**</span></b>
+<b><span style='color:#008000;'>     * Asigna los valores de totales de las palabras en el respectivo panel</span></b>
+<b><span style='color:#008000;'>     </span></b><b><span style='color:#008000;'>*/</span></b>
+    <b>private</b> <span style='color:#0057ae;'>void</span> <span style='color:#644a9b;'>refrescarTotalesDiccionarios</span>( )
+    {
+        panelDiccionarios.<span style='color:#644a9b;'>asignarTotalIngles</span>( traductor.<span style='color:#644a9b;'>darTotalPalabrasTraducidas</span>( Traductor.<span style='color:#644a9b;'>INGLES</span> ) );
+        panelDiccionarios.<span style='color:#644a9b;'>asignarTotalFrances</span>( traductor.<span style='color:#644a9b;'>darTotalPalabrasTraducidas</span>( Traductor.<span style='color:#644a9b;'>FRANCES</span> ) );
+        panelDiccionarios.<span style='color:#644a9b;'>asignarTotalItalino</span>( traductor.<span style='color:#644a9b;'>darTotalPalabrasTraducidas</span>( Traductor.<span style='color:#644a9b;'>ITALIANO</span> ) );
+    }
+
+    <span style='color:#898887;'>// -----------------------------------------------------------------</span>
+    <span style='color:#898887;'>// Puntos de Extensión</span>
+    <span style='color:#898887;'>// -----------------------------------------------------------------</span>
+
+    <b><span style='color:#008000;'>/**</span></b>
+<b><span style='color:#008000;'>     * Método para la extensión 1</span></b>
+<b><span style='color:#008000;'>     </span></b><b><span style='color:#008000;'>*/</span></b>
+    <b>public</b> <span style='color:#0057ae;'>void</span> <span style='color:#644a9b;'>reqFuncOpcion1</span>( )
+    {
+        <b><span style='color:#0095ff;'>String</span></b> resultado = traductor.<span style='color:#644a9b;'>metodo1</span>( );
+        <b><span style='color:#0095ff;'>JOptionPane</span></b>.<span style='color:#644a9b;'>showMessageDialog</span>( <b>this</b>, resultado, <span style='color:#bf0303;'>&quot;Respuesta&quot;</span>, <b><span style='color:#0095ff;'>JOptionPane</span></b>.<span style='color:#644a9b;'>INFORMATION_MESSAGE</span> );
+    }
+
+    <b><span style='color:#008000;'>/**</span></b>
+<b><span style='color:#008000;'>     * Método para la extensión 2</span></b>
+<b><span style='color:#008000;'>     </span></b><b><span style='color:#008000;'>*/</span></b>
+    <b>public</b> <span style='color:#0057ae;'>void</span> <span style='color:#644a9b;'>reqFuncOpcion2</span>( )
+    {
+        <b><span style='color:#0095ff;'>String</span></b> resultado = traductor.<span style='color:#644a9b;'>metodo2</span>( );
+        <b><span style='color:#0095ff;'>JOptionPane</span></b>.<span style='color:#644a9b;'>showMessageDialog</span>( <b>this</b>, resultado, <span style='color:#bf0303;'>&quot;Respuesta&quot;</span>, <b><span style='color:#0095ff;'>JOptionPane</span></b>.<span style='color:#644a9b;'>INFORMATION_MESSAGE</span> );
+    }
+
+    <span style='color:#898887;'>// -----------------------------------------------------------------</span>
+    <span style='color:#898887;'>// Programa principal</span>
+    <span style='color:#898887;'>// -----------------------------------------------------------------</span>
+
+    <b><span style='color:#008000;'>/**</span></b>
+<b><span style='color:#008000;'>     * Este método ejecuta la aplicación, creando una nueva interfaz</span></b>
+<b><span style='color:#008000;'>     * </span></b><b><span style='color:#808080;'>@param </span></b><i><span style='color:#008080;'>args </span></i><span style='color:#008000;'>son los argumentos de la aplicación. No se requiere ninguno.</span>
+<span style='color:#008000;'>     </span><b><span style='color:#008000;'>*/</span></b>
+    <b>public</b> <span style='color:#0057ae;'>static</span> <span style='color:#0057ae;'>void</span> <span style='color:#644a9b;'>main</span>( <b><span style='color:#0095ff;'>String</span></b>[] args )
+    {
+        InterfazTraductor interfaz = <b>new</b> <span style='color:#644a9b;'>InterfazTraductor</span>( );
+        interfaz.<span style='color:#644a9b;'>setVisible</span>( <b>true</b> );
+    }
+}</pre>
+</body>
+</html>
