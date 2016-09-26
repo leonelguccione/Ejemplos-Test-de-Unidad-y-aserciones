@@ -29,4 +29,9 @@
       <hash><url n="URL" path="Traductor/Traductor.jpr"/></hash>
       <hash><url n="URL" path="TraductorTest/TraductorTest.jpr"/></hash>
    </list>
+   <hash n="oracle.jdeveloper.maven.compiler.MavenConfiguration">
+      <hash n="oracle.jdeveloper.maven.compiler.MavenConfiguration">
+         <url n="pomfileURL" path="pom.xml"/>
+      </hash>
+   </hash>
 </jws:workspace>
