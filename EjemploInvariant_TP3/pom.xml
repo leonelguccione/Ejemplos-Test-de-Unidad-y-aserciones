@@ -32,6 +32,37 @@
       </resource>
     </resources>
     <outputDirectory>classes/</outputDirectory>
-    <plugins/>
+    <plugins>
+      <plugin>
+        <groupId>com.oracle.adf.plugin</groupId>
+        <artifactId>ojdeploy</artifactId>
+        <version>12.1.3-0-0</version>
+        <configuration>
+          <ojdeploy>
+            ${oracleHome}/jdeveloper/jdev/bin/ojdeploy
+          </ojdeploy>
+          <workspace>
+            ${basedir}/../Taller1.jws
+          </workspace>
+          <project>
+            EjemploInvariant_TP3
+          </project>
+          <profile>
+            TP3jar
+          </profile>
+          <usemaven>
+            true
+          </usemaven>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>deploy</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
   </build>
 </project>
