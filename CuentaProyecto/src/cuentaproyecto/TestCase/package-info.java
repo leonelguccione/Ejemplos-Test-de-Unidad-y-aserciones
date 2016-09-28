@@ -1,2 +1,2 @@
-package cuentaproyecto.Test;
+package cuentaproyecto.TestCase;
 
