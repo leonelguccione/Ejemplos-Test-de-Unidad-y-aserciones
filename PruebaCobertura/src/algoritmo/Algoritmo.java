@@ -39,7 +39,7 @@ public class Algoritmo
                 }
                 System.out.println("b no es 20 y se imprimio el valor de c");
             }
-            // a = lector.nextInt();
+            a = 11;
         }
         System.out.println("a no es igual a 10");
     }
