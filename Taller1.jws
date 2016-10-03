@@ -26,6 +26,8 @@
       <hash><url n="URL" path="CuentaAserciones/CuentaAserciones.jpr"/></hash>
       <hash><url n="URL" path="CuentaProyecto/CuentaProyecto.jpr"/></hash>
       <hash><url n="URL" path="EjemploInvariant_TP3/EjemploInvariant_TP3.jpr"/></hash>
+      <hash><url n="URL" path="ejemplo-junit-3.8.1/ejemplo-junit.jpr"/></hash>
+      <hash><url n="URL" path="ejemplo-junit-3.8.1-Test/ejemplo-junit-Test.jpr"/></hash>
       <hash><url n="URL" path="PruebaCobertura/PruebaCobertura.jpr"/></hash>
       <hash><url n="URL" path="Traductor/Traductor.jpr"/></hash>
       <hash><url n="URL" path="TraductorTest/TraductorTest.jpr"/></hash>
