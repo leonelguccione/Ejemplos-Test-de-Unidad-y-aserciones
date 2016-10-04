@@ -136,9 +136,9 @@ public class TraductorTest extends TestCase
         assertTrue( traductor.agregarTraduccion( "revista", "rivista", Traductor.ITALIANO ) );
 
         // En cada diccionario deben haber 3 palabras con sus traducciones
-        assertEquals( "No tiene el número de palabras esperado en inglés", 3, traductor.darTotalPalabrasTraducidas( Traductor.INGLES ) );
-        assertEquals( "No tiene el número de palabras esperado en francés", 3, traductor.darTotalPalabrasTraducidas( Traductor.FRANCES ) );
-        assertEquals( "No tiene el número de palabras esperado en italiano", 3, traductor.darTotalPalabrasTraducidas( Traductor.ITALIANO ) );
+        assertEquals( "No tiene el número de palabras esperado en inglés", 3, traductor.darTotalPalabrasTraducidas(Traductor.INGLES ) );
+        assertEquals( "No tiene el número de palabras esperado en francés", 3, traductor.darTotalPalabrasTraducidas(Traductor.FRANCES ) );
+        assertEquals( "No tiene el número de palabras esperado en italiano", 3, traductor.darTotalPalabrasTraducidas(Traductor.ITALIANO ) );
 
         // Realiza la búsqueda de traducciones de español a inglés
         Traduccion traduccion;
@@ -265,9 +265,9 @@ public class TraductorTest extends TestCase
         assertFalse( "La traducción no debió ser adicionada", agregada );
 
         // Verifica el número de palabras en cada diccionario
-        assertEquals( "No tiene el número de palabras esperado en inglés", 12, traductor.darTotalPalabrasTraducidas( Traductor.INGLES ) );
-        assertEquals( "No tiene el número de palabras esperado en francés", 12, traductor.darTotalPalabrasTraducidas( Traductor.FRANCES ) );
-        assertEquals( "No tiene el número de palabras esperado en italino", 12, traductor.darTotalPalabrasTraducidas( Traductor.ITALIANO ) );
+        assertEquals( "No tiene el número de palabras esperado en inglés", 12, traductor.darTotalPalabrasTraducidas(Traductor.INGLES ) );
+        assertEquals( "No tiene el número de palabras esperado en francés", 12, traductor.darTotalPalabrasTraducidas(Traductor.FRANCES ) );
+        assertEquals( "No tiene el número de palabras esperado en italino", 12, traductor.darTotalPalabrasTraducidas(Traductor.ITALIANO ) );
 
         // Buscar traducciones de español a inglés
         Traduccion traduccion = traductor.traducir( "perro", Traductor.ESPANOL, Traductor.INGLES );
@@ -399,9 +399,9 @@ public class TraductorTest extends TestCase
         assertFalse( "La traducción debió ser adicionada", agregada );
 
         // Verifica el número de palabras en cada diccionario
-        assertEquals( "No tiene el número de palabras esperado en inglés", 12, traductor.darTotalPalabrasTraducidas( Traductor.INGLES ) );
-        assertEquals( "No tiene el número de palabras esperado en francés", 12, traductor.darTotalPalabrasTraducidas( Traductor.FRANCES ) );
-        assertEquals( "No tiene el número de palabras esperado en italino", 12, traductor.darTotalPalabrasTraducidas( Traductor.ITALIANO ) );
+        assertEquals( "No tiene el número de palabras esperado en inglés", 12, traductor.darTotalPalabrasTraducidas(Traductor.INGLES ) );
+        assertEquals( "No tiene el número de palabras esperado en francés", 12, traductor.darTotalPalabrasTraducidas(Traductor.FRANCES ) );
+        assertEquals( "No tiene el número de palabras esperado en italino", 12, traductor.darTotalPalabrasTraducidas(Traductor.ITALIANO ) );
 
         // Buscar traducciones de español a inglés que no se debieron agregar
         Traduccion traduccion = traductor.traducir( "palabra1", Traductor.ESPANOL, Traductor.INGLES );
